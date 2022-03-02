@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -28,6 +29,12 @@
   color: #61dafb;
 }
 
+.infoblock {
+  border: 1px solid black;
+  width: 300px;
+  min-height: 300px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +43,4 @@
     transform: rotate(360deg);
   }
 }
+
