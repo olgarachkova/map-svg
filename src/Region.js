@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
 function latlngToPx(mapCurrentX, mapCurrentY, viewboxStartX, viewboxStartY, viewboxEndX, viewboxEndY, mapStartX, mapStartY, mapEndX, mapEndY) {
@@ -10,20 +10,7 @@ function latlngToPx(mapCurrentX, mapCurrentY, viewboxStartX, viewboxStartY, view
 }
 
 
-const Region = ({ geo, viewbox, map, setInfo }) => {
-
-    const [fillColor, setFillColor] = useState('transparent');
-
-    /*const viewboxStartX = 0;
-    const viewboxStartY = 0;
-    const viewboxEndX = 400;
-    const viewboxEndY = 700;
-
-    const mapStartX = 57.551841;
-    const mapStartY = 75.273074;
-    const mapEndX = 53.189318;
-    const mapEndY = 89.591162;*/
-
+const Region = ({ geo, viewbox, map, setInfo, cn }) => {
     const geoPoints = geo[0].geojson.coordinates[0].map(item => {
         return latlngToPx(item[1], item[0], ...viewbox, ...map);
     }).join(' ');
@@ -34,23 +21,12 @@ const Region = ({ geo, viewbox, map, setInfo }) => {
         setInfo(geoInfo);
     }
 
-    const handleMouseOver = (e) => {
-        setFillColor('red');
-    }
-
-    const handleMouseOut = (e) => {
-        setFillColor('transparent');
-    }
-
     return (
         <g>
             <polygon
                 points={geoPoints}
-                fill={fillColor}
-                stroke="black"
                 onClick={handleClick}
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
+                className={cn}
             >
                 <title>{geoInfo}</title>
             </polygon>

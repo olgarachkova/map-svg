@@ -1,17 +1,8 @@
 .App {
   text-align: center;
   display: flex;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  height: 1000px;
+  width: 1500px;
 }
 
 .App-header {
@@ -32,15 +23,130 @@
 .infoblock {
   border: 1px solid black;
   width: 300px;
-  min-height: 300px;
+  height: 300px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.region1 {
+  fill: transparent;
+  stroke: black;
+  stroke-dasharray: 10;
+  animation: dash 5s linear infinite;
+  transition: 1s ease-in-out;
+}
+
+.region1:hover {
+  fill: red;
+}
+
+.region2 {
+  fill: transparent;
+  stroke: black;
+}
+
+.region2:hover {
+  animation: colorswitch 5s linear infinite alternate;
+}
+
+.region3 {
+  fill: transparent;
+  stroke: black;
+  stroke-width: 1;
+  transition: 2s linear;
+}
+
+.region3:hover {
+  stroke: rgb(186, 26, 207);
+  stroke-width: 5;
+}
+
+.region4 {
+  fill: transparent;
+  stroke: black;
+  transition: 3s ease-in;
+  stroke-dasharray: 0;
+  stroke-width: 4;
+}
+
+.region4:hover {
+  stroke-dasharray: 10;
+  stroke: rgb(51, 206, 37);
+  
+}
+
+.region5 {
+  fill: transparent;
+  stroke: black;
+  transition: 2s ease-in-out;
+}
+
+.region5:hover {
+  stroke: aqua;
+  fill: aqua;
+}
+
+@keyframes dash {
   to {
-    transform: rotate(360deg);
+    stroke-dashoffset: 300;
   }
 }
 
+@keyframes colorswitch {
+  0% {
+    fill: red;
+  }
+  15% {
+    fill: orange
+  }
+  30% {
+    fill: yellow
+  }
+  45% {
+    fill: green
+  }
+  60% {
+    fill: aqua
+  }
+  75% {
+    fill: blue;
+  }
+  90% {
+    fill: purple;
+  }
+  100% {
+    fill: magenta;
+  }
+}
+
+stop {
+    animation: colors 12s infinite;
+}
+
+.stop-2 {
+    animation-delay: -3s;
+}
+
+.stop-3 {
+    animation-delay: -6s;
+}
+
+@keyframes colors {
+    30% {
+        stop-color: gold;
+    }
+    60% {
+        stop-color: yellowgreen;
+    }
+    90% {
+        stop-color: orangered;
+    }
+  }
+
+.region6 {
+  fill: transparent;
+  stroke: black;
+  transition: 1s ease;
+}
+
+.region6:hover {
+  fill:url(#gradlinear);
+}
